@@ -13,27 +13,36 @@ using namespace std;
 class Solution {
 public:
     char nextGreatestLetter(vector<char>& letters, char target) {
-        int l = 0, r = letters.size();
+        int l = 0, r = letters.size() - 1;
         int mid = 0;
         while (l < r){
-            mid = l + (r - l) / 2;
-            if (letters[mid] < target){
-                l = mid + 1;
+            mid = l + (r - l + 1) / 2;
+            if (letters[mid] <= target){
+                l = mid;
             }else{
-                r = mid;
+                r = mid - 1;
             }
         }
         char ans = ' ';
-        if (letters[l] == target){
-            if (l == letters.size()-1){
-                ans = letters[0];
-            }else{
-                ans = letters[l+1];
-            }
-        }else if (letters[l] > target){
-            ans = letters[l];
-        }else{
+
+        // if (l == letters.size()-1){
+        //     ans = letters[0];
+        // }else if (l == 0){
+        //     if (letters[l] <= target){
+        //         ans = letters[l+1];
+        //     }else{
+        //         ans = letters[0];
+        //     }
+        // }else{
+        //     ans = letters[l+1];
+        // }
+
+        if (l == letters.size()-1){
             ans = letters[0];
+        }else if (l == 0 && letters[l] > target){
+            ans = letters[0];
+        }else{
+            ans = letters[l+1];
         }
         return ans;
     }
@@ -42,9 +51,9 @@ public:
 int main(){
     Solution sol;
     vector<char> letters = {'c', 'f', 'j'};
-    char target = 'a';
+    char target = 'j';
     printf("%c\n", sol.nextGreatestLetter(letters, target));
-    letters = {'x', 'x', 'y', 'y'},target = 'x';
+    letters = {'x', 'x', 'y', 'y'},target = 'z';
     printf("%c\n", sol.nextGreatestLetter(letters, target));
     return 0;
 }
