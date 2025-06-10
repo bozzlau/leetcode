@@ -13,7 +13,29 @@ using namespace std;
 class Solution {
 public:
     char nextGreatestLetter(vector<char>& letters, char target) {
-        return 'a';
+        int l = 0, r = letters.size();
+        int mid = 0;
+        while (l < r){
+            mid = l + (r - l) / 2;
+            if (letters[mid] < target){
+                l = mid + 1;
+            }else{
+                r = mid;
+            }
+        }
+        char ans = ' ';
+        if (letters[l] == target){
+            if (l == letters.size()-1){
+                ans = letters[0];
+            }else{
+                ans = letters[l+1];
+            }
+        }else if (letters[l] > target){
+            ans = letters[l];
+        }else{
+            ans = letters[0];
+        }
+        return ans;
     }
 };
 
@@ -21,6 +43,8 @@ int main(){
     Solution sol;
     vector<char> letters = {'c', 'f', 'j'};
     char target = 'a';
+    printf("%c\n", sol.nextGreatestLetter(letters, target));
+    letters = {'x', 'x', 'y', 'y'},target = 'x';
     printf("%c\n", sol.nextGreatestLetter(letters, target));
     return 0;
 }
