@@ -51,7 +51,7 @@ public:
 
 int main(){
     vector<int> nums = {5,7,7,8,8,10};
-    int target = 8;
+    int target = 7;
     // vector<int> nums = {};
     // int target = 0;
     Solution sol;

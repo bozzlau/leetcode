@@ -1,6 +1,9 @@
 # 忽略所有 .vscode 目录及其子目录下的所有内容
 .vscode/
 
+# 忽略所有名为 .DS_Store 的文件 (macOS 特有)
+**/.DS_Store
+
 # 忽略所有 build 目录及其子目录下的所有内容
 build/
 
