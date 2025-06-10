@@ -23,20 +23,8 @@ public:
                 r = mid - 1;
             }
         }
+        
         char ans = ' ';
-
-        // if (l == letters.size()-1){
-        //     ans = letters[0];
-        // }else if (l == 0){
-        //     if (letters[l] <= target){
-        //         ans = letters[l+1];
-        //     }else{
-        //         ans = letters[0];
-        //     }
-        // }else{
-        //     ans = letters[l+1];
-        // }
-
         if (l == letters.size()-1){
             ans = letters[0];
         }else if (l == 0 && letters[l] > target){
