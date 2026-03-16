@@ -34,8 +34,16 @@ void pushDown(int p, int pl, int pr){
     if (mul_tag[p] != 1 || add_tag[p] != 0){
         //下沉左子树
         addEleTag(ls(p), pl, mid);
+        // tree[lson] = tree[lson] * mul_tag[p] + (mid-pl+1) * add_tag[p];
+        // mul_tag[lson] *= mul_tag[p];
+        // add_tag[lson] = add_tag[lson] * mul_tag[p] + add_tag[p];
+
         //下沉右子树
         addEleTag(rs(p), mid+1, pr);
+        // tree[rson] = tree[rson] * mul_tag[p] + (pr-mid) * add_tag[p];
+        // mul_tag[rson] *= mul_tag[p];
+        // add_tag[rson] = add_tag[rson] * mul_tag[p] + add_tag[p];
+        
         //下沉后父节点不再有更改记录标记
         mul_tag[p] = 1; add_tag[p] = 0;
     }
